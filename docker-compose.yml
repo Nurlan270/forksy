@@ -1,0 +1,48 @@
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: web
+    volumes:
+      - ./web:/var/www
+    depends_on:
+      - db
+    networks:
+      - app
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/var/www
+      - ./web/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+    networks:
+      - app
+
+  db:
+    image: postgres:16
+    container_name: db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  app:
+    driver: bridge
