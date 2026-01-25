@@ -1,6 +1,6 @@
 FROM php:8.4-fpm
 
-WORKDIR /var/www
+WORKDIR /var/www/web
 
 RUN apt-get update \
     && apt-get install -y \
@@ -21,9 +21,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-COPY . /var/www
+COPY . /var/www/web
 
-RUN chown -R www-data:www-data /var/www \
+RUN chown -R www-data:www-data /var/www/web \
     && chmod -R 775 storage bootstrap/cache
 
 EXPOSE 9000

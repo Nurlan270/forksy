@@ -5,7 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: web
     volumes:
-      - ./web:/var/www
+      - ./web:/var/www/web
+    ports:
+      - "${VITE_PORT:-5173}:5173"
     depends_on:
       - db
     networks:
@@ -17,7 +19,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./web:/var/www
+      - ./web:/var/www/web
       - ./web/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - web
