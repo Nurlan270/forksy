@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <x-header />
+    <x-header/>
 
     {{-- Hero --}}
     <section class="relative overflow-hidden">
@@ -18,11 +18,13 @@
                     </p>
 
                     <div class="mt-10 flex items-center gap-4">
-                        <a href="/register"
-                           class="rounded-full bg-green-600 px-7 py-3 text-sm font-medium text-white
+                        @guest
+                            <a href="{{ localizeRoute('auth.register.show') }}"
+                               class="rounded-full bg-green-600 px-7 py-3 text-sm font-medium text-white
                                   hover:bg-green-700 transition shadow-md">
-                            {{ __('welcome.hero.btn.start') }}
-                        </a>
+                                {{ __('welcome.hero.btn.start') }}
+                            </a>
+                        @endguest
 
                         <a href="#features"
                            class="rounded-full border border-gray-300 px-7 py-3 text-sm font-medium
@@ -75,5 +77,5 @@
         </div>
     </section>
 
-    <x-footer />
+    <x-footer/>
 </x-layouts.app>
