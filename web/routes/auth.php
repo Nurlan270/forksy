@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::prefix(LaravelLocalization::setLocale() . '/auth')
-    ->middleware(['localeCookieRedirect', 'localizationRedirect'])
+    ->middleware(['guest', 'localeCookieRedirect', 'localizationRedirect'])
     ->name("auth.")->group(function () {
     // Registration Routes
     Route::get('/register', [RegisterController::class, 'show'])->name('register.show');
