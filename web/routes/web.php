@@ -8,5 +8,5 @@ require_once __DIR__ . "/auth.php";
 Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeCookieRedirect', 'localizationRedirect'])
     ->group(function () {
-    Route::view('/', 'welcome');
+    Route::view('/', 'welcome')->name('welcome');
 });
