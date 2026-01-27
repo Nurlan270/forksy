@@ -8,8 +8,11 @@
     <link rel="shortcut icon" href="{{ asset("favicon.png") }}" type="image/x-icon">
     <title>{{ $title ?? config("app.name") }}</title>
     @vite(["resources/css/app.css", "resources/js/app.js"])
+    {!! ToastMagic::styles() !!}
 </head>
-<body>
+<body class="min-h-screen flex flex-col bg-gray-50">
     {{ $slot }}
+
+    {!! ToastMagic::scripts() !!}
 </body>
 </html>
