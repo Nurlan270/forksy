@@ -27,6 +27,8 @@ class RegisterController extends Controller
             __('toast.message.success.register')
         );
 
-        return redirect()->route('welcome');
+        return redirect()->intended(
+            localizeRoute('welcome')
+        );
     }
 }
