@@ -1,6 +1,9 @@
 <?php
 
 return [
-    'login' => 'Войти',
+    'login'    => 'Войти',
     'register' => 'Создать аккаунт',
+    'profile'  => 'Профиль',
+    'settings' => 'Настройки',
+    'logout'   => 'Выйти',
 ];
