@@ -25,7 +25,6 @@ return [
     'placeholders' => [
         'name' => 'John Doe',
         'email' => 'you@example.com',
-        'password' => '••••••••',
     ],
 
     'actions' => [
