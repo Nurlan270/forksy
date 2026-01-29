@@ -16,7 +16,7 @@
                 </div>
 
                 {{-- Form --}}
-                <form method="POST" action="/login" class="space-y-5">
+                <form method="POST" action="{{ localizeRoute('auth.login.store') }}" class="space-y-5">
                     @csrf
 
                     {{-- Email --}}
@@ -37,19 +37,7 @@
                     </div>
 
                     {{-- Password --}}
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('auth.fields.password') }}
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            required
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
-                                   focus:border-green-500 focus:ring-green-500"
-                            placeholder="{{ __('auth.placeholders.password') }}"
-                        >
-                    </div>
+                    <x-auth.password/>
 
                     {{-- Remember me --}}
                     <div class="flex items-center justify-between">
