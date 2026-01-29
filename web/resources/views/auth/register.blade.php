@@ -52,34 +52,10 @@
                     </div>
 
                     {{-- Password --}}
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('auth.fields.password') }}
-                        </label>
-                        <input
-                            type="password"
-                            name="password"
-                            required
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
-                                   focus:border-green-500 focus:ring-green-500"
-                            placeholder="{{ __('auth.placeholders.password') }}"
-                        >
-                    </div>
+                    <x-auth.password/>
 
                     {{-- Password confirmation --}}
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ __('auth.fields.password_confirmation') }}
-                        </label>
-                        <input
-                            type="password"
-                            name="password_confirmation"
-                            required
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
-                                   focus:border-green-500 focus:ring-green-500"
-                            placeholder="{{ __('auth.placeholders.password') }}"
-                        >
-                    </div>
+                    <x-auth.password :is_confirm="true"/>
 
                     {{-- Submit --}}
                     <button
