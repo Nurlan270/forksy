@@ -9,9 +9,12 @@ RUN apt-get update \
         zip \
         unzip \
         libpq-dev \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
     && docker-php-ext-install \
         pdo \
         pdo_pgsql \
+        bcmath \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
