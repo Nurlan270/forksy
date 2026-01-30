@@ -4,11 +4,11 @@ build:
 	@echo "⏳ Starting build process..."
 	@echo ""
 
+	$(WEB) sh -c '[ -f .env ] || cp .env.example .env'
+
 	docker compose --env-file web/.env up -d --build
 
 	$(WEB) composer install
-
-	$(WEB) sh -c '[ -f .env ] || cp .env.example .env'
 
 	$(WEB) php artisan key:generate
 	$(WEB) php artisan migrate --force
