@@ -181,6 +181,7 @@ return [
     'custom' => [
         'email' => [
             'exists' => 'Email or password is incorrect.',
+            'unique' => 'User with this email already exists.',
         ],
     ],
 
