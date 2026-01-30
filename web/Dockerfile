@@ -9,12 +9,19 @@ RUN apt-get update \
         zip \
         unzip \
         libpq-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
     && pecl install redis \
     && docker-php-ext-enable redis \
+    && docker-php-ext-configure gd \
+        --with-freetype \
+        --with-jpeg \
     && docker-php-ext-install \
         pdo \
         pdo_pgsql \
         bcmath \
+        gd \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
