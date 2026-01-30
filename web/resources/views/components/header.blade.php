@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="border-t border-gray-100">
-                        <form method="POST" action="{{ localizeRoute('welcome') }}">
+                        <form method="POST" action="{{ localizeRoute('auth.logout') }}">
                             @csrf
                             <button
                                 type="submit"
