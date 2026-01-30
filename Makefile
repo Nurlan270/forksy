@@ -1,7 +1,20 @@
+WEB = docker exec web
+
 build:
-	@echo "Starting build process..."
-	docker exec web composer install
-	docker exec web npm install
-	docker exec web npm run build
-	docker exec web php artisan migrate
-	@echo "Build completed. You can open website on http://localhost:8080"
+	@echo "⏳ Starting build process..."
+	@echo ""
+
+	docker compose --env-file web/.env up -d --build
+
+	$(WEB) composer install
+
+	$(WEB) sh -c '[ -f .env ] || cp .env.example .env'
+
+	$(WEB) php artisan key:generate
+	$(WEB) php artisan migrate --force
+
+	$(WEB) npm install
+	$(WEB) npm run build
+
+	@echo ""
+	@echo "✔︎ Build completed successfully! Open: http://localhost:8080"
