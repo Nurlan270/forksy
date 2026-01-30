@@ -54,4 +54,11 @@ class User extends Authenticatable
     {
         return Attribute::set(fn($v) => trim($v));
     }
+
+    protected function avatar(): Attribute
+    {
+        return Attribute::get(fn() =>
+            $this->avatar ?? app('avatar')->create($this->name)->toBase64()
+        );
+    }
 }
