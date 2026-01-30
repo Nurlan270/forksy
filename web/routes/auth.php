@@ -14,7 +14,8 @@ Route::prefix(LaravelLocalization::setLocale() . '/auth')
 
     // Login Routes
     Route::get('/login', [LoginController::class, 'show'])->name('login.show');
-    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+    Route::post('/login', [LoginController::class, 'store'])
+        ->middleware('throttle:6,1')->name('login.store');
 });
 
 // Logout Route
