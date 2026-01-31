@@ -6,9 +6,9 @@ build:
 
 	docker compose up -d --build
 
-	$(WEB) composer install
-
 	$(WEB) sh -c '[ -f .env ] || cp .env.example .env'
+
+	$(WEB) composer install
 
 	$(WEB) php artisan key:generate
 	$(WEB) php artisan migrate --force

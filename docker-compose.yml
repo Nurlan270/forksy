@@ -31,9 +31,9 @@ services:
     container_name: db
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: "${DB_DATABASE:-forksy}"
+      POSTGRES_USER: "${DB_USERNAME:-root}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-pass}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -51,7 +51,6 @@ services:
       - redis_data:/data
     networks:
       - app
-
 
 volumes:
   postgres_data:
