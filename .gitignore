@@ -5,7 +5,3 @@
 /.nova
 /.vscode
 /.zed
-
-.env
-.env.*
-!.env.example
