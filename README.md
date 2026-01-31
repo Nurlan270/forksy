@@ -9,7 +9,7 @@
 
 ### 1. Склонируйте репозиторий и перейдите в его директорию:
 ```
-git clone git@github.com:Nurlan270/forksy.git && cd ./forksy
+git clone https://github.com/Nurlan270/forksy.git && cd ./forksy
 ```
 
 ### 2. Соберите проект:
