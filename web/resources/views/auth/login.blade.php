@@ -50,7 +50,7 @@
                             {{ __('auth.login.remember') }}
                         </label>
 
-                        <a href="#"
+                        <a href="{{ localizeRoute('password.request') }}"
                            class="text-sm text-green-600 hover:underline">
                             {{ __('auth.login.forgot') }}
                         </a>
