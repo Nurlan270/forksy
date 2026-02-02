@@ -30,7 +30,8 @@ Route::prefix(LaravelLocalization::setLocale() . '/auth')
     ->middleware(['guest', 'localeCookieRedirect', 'localizationRedirect'])
     ->name('password.')->group(function () {
     Route::get('/forgot-password', [PasswordResetController::class, 'showForgot'])->name('request');
-    Route::post('/forgot-password', [PasswordResetController::class, 'email'])->name('email');
+    Route::post('/forgot-password', [PasswordResetController::class, 'email'])
+        ->middleware('throttle:6,1')->name('email');
 
     Route::get('/reset-password/{token}', [PasswordResetController::class, 'showReset'])->name('reset');
     Route::post('/reset-password', [PasswordResetController::class, 'update'])->name('update');
