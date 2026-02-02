@@ -3,11 +3,13 @@
 return [
     'title' => [
         'success' => [
+            'text' => 'Success',
             'register' => 'Registration successful!',
             'login' => 'Login successful!',
             'logout' => 'You have been logged out',
         ],
         'error' => [
+            'text' => 'Error',
             'validation' => 'Validation error',
         ],
     ],

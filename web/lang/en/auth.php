@@ -15,6 +15,23 @@ return [
         'have_account' => 'Already have an account?',
     ],
 
+    'forgot_password' => [
+        'title' => 'Forgot your password?',
+        'subtitle' => 'Enter your email and we’ll send you a reset link.',
+        'actions' => [
+            'send_link' => 'Send reset link',
+            'back_to_login' => 'Back to login',
+        ],
+    ],
+
+    'reset_password' => [
+        'title' => 'Reset password',
+        'subtitle' => 'Choose a new password for your account.',
+        'actions' => [
+            'reset' => 'Reset password',
+        ],
+    ],
+
     'fields' => [
         'name' => 'Name',
         'email' => 'Email',
