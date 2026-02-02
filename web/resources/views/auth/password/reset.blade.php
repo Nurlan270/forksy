@@ -21,21 +21,7 @@
                 <input type="hidden" name="token" value="{{ $token }}">
 
                 {{-- Email --}}
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('auth.fields.email') }}
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        autofocus
-                        class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
-                               focus:border-green-500 focus:ring-green-500"
-                        placeholder="{{ __('auth.placeholders.email') }}"
-                        value="{{ old('email', $email ?? '') }}"
-                    >
-                </div>
+                <x-auth.email/>
 
                 {{-- Password --}}
                 <x-auth.password/>
