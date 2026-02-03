@@ -1,6 +1,10 @@
-@props(['is_confirm' => false])
+@props([
+    'name' => null,
+    'is_confirm' => false,
+])
+
 @php
-    $name = $is_confirm ? 'password_confirmation' : 'password';
+    $name ??= $is_confirm ? 'password_confirmation' : 'password';
     $label = $is_confirm ? __('auth.fields.password_confirmation') : __('auth.fields.password')
 @endphp
 
