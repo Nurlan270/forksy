@@ -19,8 +19,10 @@
                     {{ __('settings.profile.title') }}
                 </h2>
 
-                <form method="POST" action="#" enctype="multipart/form-data" class="space-y-4">
+                <form method="POST" action="{{ localizeRoute('user.settings.update.profile') }}" enctype="multipart/form-data" class="space-y-4">
                     @csrf
+                    @method('PATCH')
+
                     {{-- Banner --}}
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -72,7 +74,7 @@
                                 <input
                                     type="text"
                                     name="name"
-                                    value="{{ old('name', auth()->user()->name) }}"
+                                    value="{{ auth()->user()->name }}"
                                     class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
                                            focus:border-green-500 focus:ring-green-500"
                                 >
@@ -85,7 +87,7 @@
                                 <input
                                     type="text"
                                     name="username"
-                                    value="{{ old('username', auth()->user()->username) }}"
+                                    value="{{ auth()->user()->username }}"
                                     class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
                                            focus:border-green-500 focus:ring-green-500"
                                 >
