@@ -7,6 +7,10 @@ return [
             'register' => 'Registration successful!',
             'login' => 'Login successful!',
             'logout' => 'You have been logged out',
+            'settings' => [
+                'profile' => 'Profile updated',
+                'password' => 'Password updated',
+            ],
         ],
         'error' => [
             'text' => 'Error',

@@ -182,6 +182,9 @@ return [
         'name'  => [
             'regex' => 'Name may only contain letters and spaces.',
         ],
+        'username' => [
+            'regex' => 'Username may only contain letters, numbers, dots, dashes, and underscores.',
+        ],
         'email' => [
             'exists' => 'Email or password is incorrect.',
             'unique' => 'User with this email already exists.',
