@@ -6,8 +6,10 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Devrabiul\ToastMagic\Facades\ToastMagic;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AuthenticationService
 {
@@ -15,7 +17,12 @@ class AuthenticationService
     {
         $validated = $request->validated();
 
-        $user = User::query()->create($validated);
+        $data = array_merge($validated, [
+            'name'     => trim($validated['name']),
+            'username' => $this->generateUsername($validated['name']),
+        ]);
+
+        $user = User::query()->create($data);
 
         auth()->login($user);
 
@@ -68,5 +75,30 @@ class AuthenticationService
         return redirect()->intended(
             localizeRoute('welcome')
         );
+    }
+
+    protected function generateUsername(string $name): string
+    {
+        $base = Str::of($name)
+            ->trim()
+            ->lower()
+            ->ascii()
+            ->replaceMatches('/[^a-z0-9]+/', '_')
+            ->trim('_');
+
+        if ($base->isEmpty()) {
+            $base = 'user';
+        }
+
+        // Prevent race condition
+        while (true) {
+            $username = "{$base}-" . Str::lower(Str::random(6));
+
+            try {
+                User::where('username', $username)->firstOrFail();
+            } catch (ModelNotFoundException) {
+                return $username;
+            }
+        }
     }
 }
