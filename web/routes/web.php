@@ -9,4 +9,7 @@ Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeCookieRedirect', 'localizationRedirect'])
     ->group(function () {
     Route::view('/', 'welcome')->name('welcome');
+
+    Route::view('/settings', 'user.settings')
+        ->middleware('auth')->name('user.settings');
 });
