@@ -24,13 +24,11 @@ class PasswordResetController extends Controller
 
     public function email(Request $request)
     {
-        $this->service->sendResetLink($request);
-
-        return back();
+        return $this->service->sendResetLink($request);
     }
 
     public function update(PasswordResetRequest $request)
     {
-        $this->service->resetPassword($request);
+        return $this->service->resetPassword($request);
     }
 }
