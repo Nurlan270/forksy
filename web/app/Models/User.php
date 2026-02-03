@@ -22,6 +22,7 @@ class User extends Authenticatable implements CanResetPasswordContract
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
         'role',
@@ -50,11 +51,6 @@ class User extends Authenticatable implements CanResetPasswordContract
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    protected function name(): Attribute
-    {
-        return Attribute::set(fn($v) => trim($v));
     }
 
     protected function avatar(): Attribute
