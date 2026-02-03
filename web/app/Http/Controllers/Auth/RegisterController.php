@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\Models\User;
-use Devrabiul\ToastMagic\Facades\ToastMagic;
+use App\Services\AuthenticationService;
 
 class RegisterController extends Controller
 {
+    public function __construct(
+        protected AuthenticationService $service
+    ) {}
+
     public function show()
     {
         return view('auth.register');
@@ -16,19 +19,6 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        $validated = $request->validated();
-
-        $user = User::query()->create($validated);
-
-        auth()->login($user);
-
-        ToastMagic::success(
-            __('toast.title.success.register'),
-            __('toast.message.success.register')
-        );
-
-        return redirect()->intended(
-            localizeRoute('welcome')
-        );
+        return $this->service->register($request);
     }
 }
