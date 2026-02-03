@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 
 class PasswordResetService
 {
-    public function sendResetLink(Request $request): void
+    public function sendResetLink(Request $request): RedirectResponse
     {
         $request->validate(['email' => 'required|email']);
 
@@ -27,6 +27,8 @@ class PasswordResetService
         } else {
             ToastMagic::error(__('toast.title.error.text'), __($status));
         }
+
+        return back();
     }
 
     public function resetPassword(PasswordResetRequest $request): RedirectResponse
