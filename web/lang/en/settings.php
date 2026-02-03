@@ -14,7 +14,7 @@ return [
 
     'fields' => [
         'name' => 'Name',
-        'email' => 'Email address',
+        'username' => 'Username',
         'avatar' => 'Avatar',
         'banner' => 'Profile banner',
         'current_password' => 'Current password',

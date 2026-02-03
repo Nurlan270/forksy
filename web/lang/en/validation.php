@@ -179,6 +179,9 @@ return [
     */
 
     'custom' => [
+        'name'  => [
+            'regex' => 'Name may only contain letters and spaces.',
+        ],
         'email' => [
             'exists' => 'Email or password is incorrect.',
             'unique' => 'User with this email already exists.',

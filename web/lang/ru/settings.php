@@ -14,7 +14,7 @@ return [
 
     'fields' => [
         'name' => 'Имя',
-        'email' => 'Электронная почта',
+        'username' => 'Никнейм',
         'avatar' => 'Аватар',
         'banner' => 'Баннер профиля',
         'current_password' => 'Текущий пароль',
