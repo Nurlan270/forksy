@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements CanResetPasswordContract
 {
@@ -55,8 +56,8 @@ class User extends Authenticatable implements CanResetPasswordContract
 
     protected function avatar(): Attribute
     {
-        return Attribute::get(fn() =>
-            $this->avatar ?? app('avatar')->create($this->name)->toBase64()
+        return Attribute::get(fn($value) =>
+            Storage::url('avatars/' . $value)
         );
     }
 }
