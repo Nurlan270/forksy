@@ -11,6 +11,10 @@ build:
 	$(WEB) composer install
 
 	$(WEB) php artisan key:generate
+
+	$(WEB) sh -c 'mkdir ./public/storage || true'
+
+	$(WEB) php artisan storage:link
 	$(WEB) php artisan migrate --force
 
 	$(WEB) npm install
