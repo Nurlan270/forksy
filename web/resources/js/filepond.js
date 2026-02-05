@@ -11,3 +11,13 @@ FilePond.registerPlugin(
 );
 
 window.FilePond = FilePond;
+
+document.querySelectorAll('.filepond').forEach(inputElement => {
+    FilePond.create(inputElement, {
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowMultiple: false,
+        instantUpload: false,
+        storeAsFile: true,
+        credits: false,
+    })
+})
