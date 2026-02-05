@@ -47,6 +47,24 @@ return [
             'report' => false,
         ],
 
+        'avatars' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/avatars'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/avatars',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'banners' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/banners'),
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/banners',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -74,7 +92,8 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage/avatars') => storage_path('app/public/avatars'),
+        public_path('storage/banners') => storage_path('app/public/banners'),
     ],
 
 ];
