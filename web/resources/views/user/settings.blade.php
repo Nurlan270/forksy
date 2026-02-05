@@ -19,7 +19,8 @@
                     {{ __('settings.profile.title') }}
                 </h2>
 
-                <form method="POST" action="{{ localizeRoute('user.settings.update.profile') }}" enctype="multipart/form-data" class="space-y-4">
+                <form method="POST" action="{{ localizeRoute('user.settings.update.profile') }}"
+                      enctype="multipart/form-data" class="space-y-4">
                     @csrf
                     @method('PATCH')
 
@@ -151,40 +152,4 @@
     </main>
 
     <x-footer/>
-    @pushonce('scripts')
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const avatarInput = document.querySelector('input[name="avatar"]');
-                const bannerInput = document.querySelector('input[name="banner"]');
-
-                // Avatar FilePond instance
-                FilePond.create(avatarInput, {
-                    allowMultiple: false,
-                    instantUpload: false,
-                    credits: false,
-                    files: [
-                        {
-                            source: "{{ auth()->user()->avatar }}",
-                            options: {type: 'local'},
-                        },
-                    ],
-                });
-
-                // Banner FilePond instance
-                FilePond.create(bannerInput, {
-                    allowMultiple: false,
-                    instantUpload: false,
-                    credits: false,
-                    @isset(auth()->user()->banner)
-                    files: [
-                        {
-                            source: "{{ auth()->user()->banner }}",
-                            options: {type: 'local'},
-                        },
-                    ],
-                    @endisset
-                });
-            });
-        </script>
-    @endpushonce
 </x-layouts.app>

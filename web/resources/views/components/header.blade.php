@@ -47,7 +47,7 @@
                             {{ auth()->user()->name }}
                         </p>
                         <p class="text-xs text-gray-500 truncate">
-                            {{ auth()->user()->email }}
+                            {{ '@'.auth()->user()->username }}
                         </p>
                     </div>
 
