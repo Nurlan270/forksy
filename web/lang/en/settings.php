@@ -12,6 +12,14 @@ return [
         'title' => 'Change password',
     ],
 
+    'preferences' => [
+        'title' => 'Preferences',
+        'language' => [
+            'title' => 'Language',
+            'subtitle' => 'Choose the language used in the interface',
+        ],
+    ],
+
     'fields' => [
         'name' => 'Name',
         'username' => 'Username',

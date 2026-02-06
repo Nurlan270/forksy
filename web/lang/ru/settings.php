@@ -12,6 +12,14 @@ return [
         'title' => 'Смена пароля',
     ],
 
+    'preferences' => [
+        'title' => 'Персонализация',
+        'language' => [
+            'title' => 'Язык',
+            'subtitle' => 'Выберите язык интерфейса',
+        ],
+    ],
+
     'fields' => [
         'name' => 'Имя',
         'username' => 'Никнейм',
