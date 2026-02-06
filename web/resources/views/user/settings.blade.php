@@ -134,6 +134,62 @@
                 </form>
             </section>
 
+            {{-- Preferences --}}
+            <section class="bg-white rounded-3xl shadow-xl p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                    {{ __('settings.preferences.title') }}
+                </h2>
+
+                <div class="flex items-center justify-between gap-6">
+                    {{-- Text --}}
+                    <div>
+                        <p class="text-sm font-medium text-gray-800">
+                            {{ __('settings.preferences.language.title') }}
+                        </p>
+                        <p class="mt-1 text-sm text-gray-600">
+                            {{ __('settings.preferences.language.subtitle') }}
+                        </p>
+                    </div>
+
+                    {{-- Language dropdown --}}
+                    <div x-data="{ open: false }" class="relative">
+                        <button
+                            type="button"
+                            @click="open = !open"
+                            @click.outside="open = false"
+                            class="flex items-center gap-2 rounded-full bg-gray-100
+                       px-4 py-2 text-sm font-medium text-gray-700
+                       hover:bg-gray-200 transition cursor-pointer"
+                        >
+                            <span>{{ strtoupper(app()->getLocale()) }}</span>
+
+                            <svg class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+
+                        <div
+                            x-show="open"
+                            x-transition
+                            class="absolute right-0 mt-2 w-36 rounded-2xl bg-white shadow-xl
+                       ring-1 ring-black/5 overflow-hidden z-50"
+                        >
+                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <a
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                    class="block px-4 py-2 text-sm text-gray-700
+                               hover:bg-gray-100 transition
+                               {{ app()->getLocale() === $localeCode ? 'bg-gray-100 font-medium' : '' }}"
+                                >
+                                    {{ $properties['name'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {{-- Danger zone --}}
             <section class="bg-white rounded-3xl shadow-xl p-6 border border-red-400">
                 <h2 class="text-lg font-semibold text-red-600 mb-2">
