@@ -20,7 +20,7 @@ class AuthenticationService
         $data = array_merge($validated, [
             'name'     => trim($validated['name']),
             'username' => $this->generateUsername($validated['name']),
-            'avatar'   => $this->generateAvatar($validated['name']),
+            'avatar'   => generateDefaultAvatar($validated['name']),
         ]);
 
         $user = User::query()->create($data);
@@ -101,16 +101,5 @@ class AuthenticationService
                 return $username;
             }
         }
-    }
-
-    protected function generateAvatar(string $name): string
-    {
-        $avatarFilename = Str::uuid() . '.png';
-
-        app('avatar')->create($name)->save(
-            storage_path('app/public/avatars/' . $avatarFilename)
-        );
-
-        return $avatarFilename;
     }
 }
