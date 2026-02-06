@@ -191,7 +191,10 @@
             </section>
 
             {{-- Danger zone --}}
-            <section class="bg-white rounded-3xl shadow-xl p-6 border border-red-400">
+            <section
+                x-data="{ open: false }"
+                class="bg-white rounded-3xl shadow-xl p-6 border border-red-400"
+            >
                 <h2 class="text-lg font-semibold text-red-600 mb-2">
                     {{ __('settings.danger.title') }}
                 </h2>
@@ -201,11 +204,63 @@
 
                 <button
                     type="button"
+                    @click="open = true"
                     class="cursor-pointer rounded-full bg-red-600 px-6 py-2.5
-                           text-sm font-medium text-white hover:bg-red-700 transition shadow-sm"
+               text-sm font-medium text-white hover:bg-red-700 transition shadow-sm"
                 >
                     {{ __('settings.danger.delete_account') }}
                 </button>
+
+                {{-- Modal --}}
+                <div
+                    x-show="open"
+                    x-transition.opacity
+                    class="fixed inset-0 z-50 flex items-center justify-center"
+                >
+                    {{-- Backdrop --}}
+                    <div
+                        class="absolute inset-0 bg-black/50"
+                        @click="open = false"
+                    ></div>
+
+                    {{-- Modal content --}}
+                    <div
+                        x-transition.scale
+                        class="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl"
+                    >
+                        <h3 class="text-lg font-semibold text-gray-900">
+                            {{ __('settings.danger.confirm_title') }}
+                        </h3>
+
+                        <p class="mt-2 text-sm text-gray-600">
+                            {{ __('settings.danger.confirm_text') }}
+                        </p>
+
+                        <div class="mt-6 flex justify-end gap-3">
+                            <button
+                                type="button"
+                                @click="open = false"
+                                class="cursor-pointer rounded-full bg-gray-100 px-5 py-2
+                           text-sm font-medium text-gray-700 hover:bg-gray-200 transition"
+                            >
+                                {{ __('settings.actions.cancel') }}
+                            </button>
+
+                            <form method="POST" action="{{ localizeRoute('user.settings.delete.account') }}">
+                                @csrf
+                                @method('DELETE')
+
+                                <button
+                                    type="submit"
+                                    class="cursor-pointer rounded-full bg-red-600 px-5 py-2
+                               text-sm font-medium text-white hover:bg-red-700 transition"
+                                >
+                                    {{ __('settings.danger.confirm_button') }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>

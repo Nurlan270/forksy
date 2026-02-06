@@ -22,4 +22,6 @@ Route::prefix(LaravelLocalization::setLocale())
         ->name('settings.update.profile');
     Route::patch('/settings/password', [SettingsController::class, 'updatePassword'])
         ->name('settings.update.password');
+    Route::delete('/settings/account', [SettingsController::class, 'deleteAccount'])
+        ->name('settings.delete.account');
 });

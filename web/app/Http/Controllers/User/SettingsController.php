@@ -26,4 +26,9 @@ class SettingsController extends Controller
     {
         //
     }
+
+    public function deleteAccount()
+    {
+        return $this->service->deleteAccount();
+    }
 }

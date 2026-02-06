@@ -48,4 +48,14 @@ class SettingsService
 
         return back();
     }
+
+    public function deleteAccount(): RedirectResponse
+    {
+        auth()->user()->delete();
+
+        ToastMagic::success(
+            __('toast.title.success.settings.account_deleted'));
+
+        return redirect()->route('welcome');
+    }
 }
