@@ -48,9 +48,12 @@
                     </div>
 
                     {{-- Avatar + basic info --}}
-                    <div class="flex items-center gap-x-7 mb-8">
+                    <div class="flex items-start gap-x-7 mb-8">
                         {{-- Avatar --}}
                         <div class="relative w-32 h-32">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                {{ __('settings.fields.avatar') }}
+                            </label>
                             <input
                                 type="file"
                                 name="avatar"
