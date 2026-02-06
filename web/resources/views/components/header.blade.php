@@ -30,7 +30,7 @@
                     class="flex items-center gap-2 rounded-full cursor-pointer focus:outline-none"
                 >
                     <img
-                        src="{{ auth()->user()->avatar }}"
+                        src="{{ auth()->user()->getAvatarPath() }}"
                         alt="Avatar"
                         class="h-9 w-9 rounded-full object-cover border border-gray-200"
                     >
