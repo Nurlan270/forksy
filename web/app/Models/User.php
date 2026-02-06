@@ -54,10 +54,8 @@ class User extends Authenticatable implements CanResetPasswordContract
         ];
     }
 
-    protected function avatar(): Attribute
+    public function getAvatarPath(): string
     {
-        return Attribute::get(fn($value) =>
-            Storage::url('avatars/' . $value)
-        );
+        return Storage::url('avatars/' . $this->avatar);
     }
 }
