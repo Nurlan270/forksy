@@ -10,6 +10,7 @@ return [
             'settings' => [
                 'profile' => 'Профиль обновлен',
                 'password' => 'Пароль обновлен',
+                'account_deleted' => 'Аккаунт удален',
             ],
         ],
         'error' => [

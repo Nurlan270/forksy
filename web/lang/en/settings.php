@@ -35,11 +35,15 @@ return [
         'update_password' => 'Update password',
         'change_avatar' => 'Change avatar',
         'change_banner' => 'Change banner',
+        'cancel' => 'Cancel',
     ],
 
     'danger' => [
         'title' => 'Danger zone',
         'subtitle' => 'Deleting your account is permanent and cannot be undone. Please be certain.',
         'delete_account' => 'Delete account',
+        'confirm_title' => 'Delete account?',
+        'confirm_text' => 'This action cannot be undone. All your data will be permanently removed.',
+        'confirm_button' => 'Yes, delete my account',
     ],
 ];

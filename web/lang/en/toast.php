@@ -10,6 +10,7 @@ return [
             'settings' => [
                 'profile' => 'Profile updated',
                 'password' => 'Password updated',
+                'account_deleted' => 'Account deleted',
             ],
         ],
         'error' => [
