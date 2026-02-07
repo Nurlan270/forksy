@@ -36,6 +36,7 @@ return [
         'name' => 'Имя',
         'email' => 'Электронная почта',
         'password' => 'Пароль',
+        'current_password' => 'Текущий пароль',
         'password_confirmation' => 'Подтверждение пароля',
     ],
 

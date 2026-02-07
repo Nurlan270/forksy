@@ -36,6 +36,7 @@ return [
         'name' => 'Name',
         'email' => 'Email',
         'password' => 'Password',
+        'current_password' => 'Current password',
         'password_confirmation' => 'Confirm password',
     ],
 
