@@ -115,10 +115,11 @@
                     {{ __('settings.password.title') }}
                 </h2>
 
-                <form method="POST" action="#" class="space-y-4">
+                <form method="POST" action="{{ localizeRoute('user.settings.update.password') }}" class="space-y-4">
                     @csrf
+                    @method('PATCH')
 
-                    <x-auth.password name="current_password"/>
+                    <x-auth.password label="{{ __('auth.fields.current_password') }}" name="current_password"/>
 
                     <x-auth.password/>
 
