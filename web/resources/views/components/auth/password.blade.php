@@ -1,11 +1,12 @@
 @props([
     'name' => null,
+    'label' => null,
     'is_confirm' => false,
 ])
 
 @php
     $name ??= $is_confirm ? 'password_confirmation' : 'password';
-    $label = $is_confirm ? __('auth.fields.password_confirmation') : __('auth.fields.password')
+    $label ??= $is_confirm ? __('auth.fields.password_confirmation') : __('auth.fields.password')
 @endphp
 
 <div x-data="{ show: false }" class="relative">
