@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\StorageDisk;
+use App\Http\Requests\Settings\UpdatePasswordRequest;
 use App\Http\Requests\Settings\UpdateProfileRequest;
 use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Http\RedirectResponse;
@@ -49,12 +50,26 @@ class SettingsService
         return back();
     }
 
+    public function updatePassword(UpdatePasswordRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        auth()->user()->update([
+            'password' => bcrypt($validated['password']),
+        ]);
+
+        ToastMagic::success(
+            __('toast.title.success.settings.password'));
+
+        return back();
+    }
+
     public function deleteAccount(): RedirectResponse
     {
         auth()->user()->delete();
 
         ToastMagic::success(
-            __('toast.title.success.settings.account_deleted'));
+            __('toast.title.success.settings.account'));
 
         return redirect()->route('welcome');
     }

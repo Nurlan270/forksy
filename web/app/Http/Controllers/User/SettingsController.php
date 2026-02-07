@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\UpdatePasswordRequest;
 use App\Http\Requests\Settings\UpdateProfileRequest;
 use App\Services\SettingsService;
 
@@ -22,9 +23,9 @@ class SettingsController extends Controller
         return $this->service->updateProfile($request);
     }
 
-    public function updatePassword()
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        //
+        return $this->service->updatePassword($request);
     }
 
     public function deleteAccount()
